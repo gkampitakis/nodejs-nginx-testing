@@ -1,0 +1,30 @@
+version: '3'
+
+services: 
+  api_server:
+    container_name: api_server # TODO: check what happens with image
+    build:
+      context: ./server
+    environment: 
+      PM2_PUBLIC_KEY: 6k1ug85enwxssd8
+      PM2_SECRET_KEY: aesspt1265hin8f
+    ports: 
+      - 4000:4000
+    restart: on-failure
+  mongo:
+    container_name: mongo
+    # volumes:
+    #   - ./data:/data/db
+    image: mongo
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
