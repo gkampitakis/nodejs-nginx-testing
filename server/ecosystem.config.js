@@ -1,6 +1,9 @@
 module.exports = [{
   script: 'server.js',
-  name: 'server',
+  name: 'Template Server',
   exec_mode: 'cluster',
-  instances: 2
+  instances: 2,
+  env_prod: {
+    NODE_ENV: "prod"
+  }
 }];
