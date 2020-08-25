@@ -12,10 +12,34 @@ services:
     ports:
       - 27017:27017
   nginx:
-    network_mode: host # This doesn't work on docker MAC
+    # network_mode: host # This doesn't work on docker MAC
     container_name: nginx
-    restart: always
+    restart: unless-stopped
     build:
       context: ./nginx
+    volumes:
+      - web-root:/var/www/html
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
     ports:
       - 80:80
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - nginx
+    command: certonly --webroot --webroot-path=/var/www/html --email gkabitakis@gmail.com --agree-tos --no-eff-email --staging -d roomalot.ga  -d www.roomalot.ga
+
+volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/gkampitakis/dev/nodejs-nginx-testing/views
+      o: bind
