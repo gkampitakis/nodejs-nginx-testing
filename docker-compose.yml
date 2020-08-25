@@ -12,6 +12,7 @@ services:
     ports:
       - 27017:27017
   nginx:
+    network_mode: host # This doesn't work on docker MAC
     container_name: nginx
     restart: always
     build:

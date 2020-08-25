@@ -35,7 +35,7 @@ fastify.register(customHealthCheck, {
 
 fastify.get('/', (req, res) => {
   res.status(200).send({
-    message: 'Nginx Nodejs Server'
+    message: 'Nginx Nodejs Server V2'
   });
 });
 
