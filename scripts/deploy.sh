@@ -2,6 +2,6 @@
 
 git pull
 
-npm install
+npm install --no-package-lock
 
 pm2 reload ecosystem.config.js --env prod

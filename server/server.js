@@ -35,7 +35,7 @@ fastify.register(customHealthCheck, {
 
 fastify.get('/', (req, res) => {
   res.status(200).send({
-    message: 'Nginx Nodejs Server V2'
+    message: 'Change Server Name'
   });
 });
 
