@@ -35,7 +35,7 @@ fastify.register(customHealthCheck, {
 
 fastify.get('/', (req, res) => {
   res.status(200).send({
-    message: 'Change Server Name'
+    message: 'Change Server Name V2'
   });
 });
 

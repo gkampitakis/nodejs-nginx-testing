@@ -17,5 +17,4 @@ jobs:
         password: ${{ secrets.EC2_PASSWORD }}
         script: |
           cd server/server
-          chmod +x ../scripts/deploy.sh
           sh ../scripts/deploy.sh
