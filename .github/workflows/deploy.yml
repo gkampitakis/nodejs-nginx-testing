@@ -16,5 +16,6 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         password: ${{ secrets.EC2_PASSWORD }}
         script: |
-            mkdir githubFolder
+            mkdir -p ~/githubFolder/
+            whoami
     
