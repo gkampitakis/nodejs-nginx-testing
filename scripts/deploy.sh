@@ -1,9 +1,5 @@
 #!/bin/sh
 
-cd ../server
-
-pwd
-
 git pull
 
 npm install

@@ -16,6 +16,6 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         password: ${{ secrets.EC2_PASSWORD }}
         script: |
-          cd server
-          chmod +x ./scripts/deploy.sh
-          sh ./scripts/deploy.sh
+          cd server/server
+          chmod +x ../scripts/deploy.sh
+          sh ../scripts/deploy.sh
