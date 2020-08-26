@@ -28,3 +28,15 @@ This repository is a testing case, trying to make a proof of concept and setting
 - Run docker compose `docker-compose up -d`.
 - `pm2 --help` 
 - `pm2 link <public key> <secret key>`
+
+## SSL setup on EC2 instance
+
+### Useful commands 
+- Install nginx on EC2 instance by running `sudo amazon-linux-extras nginx1`
+  Replace `/etc/nginx/nginx.conf` with [nginx.conf](./nginx.conf)
+- Test nginx configuration is correct by running `nginx -t`
+- Restart nginx to pull new configuration `systemctl restart nginx`
+- Install certbot by running `sudo yum install -y certbot python2-certbot-nginx`
+- Run certbot `sudo certbot --nginx` and follow prompt messages
+- Set up cron job `crontab -e`. AWS recommends running this `39      1,13    *       *       *       root    certbot renew --no-self-upgrade`. But not yet tested
+- Check cron jobs set with `crontab -l`
